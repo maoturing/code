@@ -4,6 +4,8 @@ package com.smallmao.day0221;
  * Created by Administrator on 2017/2/23 0023.
  */
 
+import java.nio.ByteBuffer;
+
 /**
  * 使用蒙特卡洛算法求pi的值,假定有一个半径为r的圆及外切正方形,圆面积与正方形面积之比:(pi*r^2)/(4r^2) = pi/4;<br/>
  * 假设某人随机向正方形掷total个点,落在圆内的个数为count,由概率论可知,count/total = (pi*r^2)/(4r^2) = pi/4
@@ -27,6 +29,7 @@ public class Pi {
         }
         double pi = count * 1.0 / total * 4;
         return pi;
-
+        ByteBuffer b = new ByteBuffer();
     }
+
 }

@@ -17,6 +17,7 @@ class Test
         {
             Socket socket = server.accept();
             new Thread(new PicUpload(socket)).start();
+
         }
 
     }
