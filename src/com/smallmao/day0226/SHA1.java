@@ -29,9 +29,20 @@ public class SHA1 {
         byte messageDigest[] = sha1.digest();
         System.out.println("第一个字节(十进制):" + messageDigest[0] +
                 "  对应的十六进制:" + Integer.toHexString(messageDigest[0]));
+        System.out.println("32位操作系统中byte(8位)以32格式存放的,当数字为正数时,前25位为0,负数前25位为1");
+        System.out.println("第一个字节(十进制):" + messageDigest[3] +
+                "  对应的十六进制:" + Integer.toHexString(messageDigest[3]));
 
         //字节数组转换为十六进制数
         StringBuffer hexString = new StringBuffer();
+        /*
+         Integer.toHexString()以十六进制（基数 16）无符号整数形式返回一个整数参数的字符串表示形式。
+         负数第一位为1,无符号整数值为参数加上 2^32
+
+          在32位的电脑中数字都是以32格式存放的，如果是一个byte(8位)类型的数字，高24位里面都是随机数字，低8位 才是实际的数据。
+           Java.lang.Integer.toHexString() 方法的参数是int(32位)类型，如果输入一个byte(8位)类型的数字，
+           这个方法会把这个数字的高24为也看作有效位，这就必然导致错误，使用&0XFF操作，可以把高24位置0以避免这样错误 的发生。
+         */
         for (int i = 0; i < messageDigest.length; i++) {
             String shaHex = Integer.toHexString(messageDigest[i]&0xff);
             if (shaHex.length() < 2){
