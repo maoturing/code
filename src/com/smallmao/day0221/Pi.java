@@ -29,7 +29,6 @@ public class Pi {
         }
         double pi = count * 1.0 / total * 4;
         return pi;
-        ByteBuffer b = new ByteBuffer();
     }
 
 }
